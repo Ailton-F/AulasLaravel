@@ -1,0 +1,15 @@
+body{
+    height: 100vh;
+}
+#events-container .card{
+    max-width: 33%;
+}
+
+#event-create-container{
+    height: 80vh;
+}
+
+footer{
+    height: 10vh;
+}
+

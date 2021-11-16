@@ -8,8 +8,16 @@ use App\Models\Event;
 class EventController extends Controller
 {
     public function index(){
-        $events = Event::all();
-        return view('welcome', ['events'=>$events]);        
+        $search = request('search');
+
+        if($search){
+            $events = Event::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+        } else {
+            $events = Event::all();   
+        }
+        return view('welcome', ['events'=>$events, 'search'=>$search]);        
     }
 
     public function create(){
@@ -19,9 +27,11 @@ class EventController extends Controller
     public function store(Request $req){
         $event = new Event;
         $event->title = $req->title;
+        $event->date = $req->date;
         $event->city = $req->city;
         $event->private = $req->private;
         $event->description = $req->desc;
+        $event->items=$req->items;
 
         if($req->hasFile('image') && $req->file('image')->isValid()){
             $requestImage = $req->image;

@@ -16,8 +16,27 @@
             <input name="title" id="title" type="text" class="form-control">
         </div>
         <div class="form-group mt-4">
+            <label for="date">Data do evento:</label>
+            <input name="date" id="date" type="date" class="form-control">
+        </div>
+        <div class="form-group mt-4">
             <label for="desc">Descrição:</label>
             <textarea name="desc" id="desc" type="text" class="form-control"></textarea>
+        </div>
+        <div class="form-group mt-4">
+            <label for="title" class="lead">Adicione itens de infraestrutura</label>
+            <div class="form-group">
+                <input type="checkbox" name="items[]" value="Cadeiras"> Cadeiras
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="items[]" value="Palco"> Palco
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="items[]" value="Open bar"> Open bar
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="items[]" value="Open food"> Open food
+            </div>
         </div>
         <div class="form-group mt-4">
             <label for="city">Cidade:</label>

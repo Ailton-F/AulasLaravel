@@ -31,14 +31,14 @@
                         <div class="navbar-nav">
                             <a class="nav-link" href="/">Eventos</a>
                             <a class="nav-link" href="/events/create">Criar eventos</a>
-                            <a class="nav-link" href="#">Entrar</a>
-                            <a class="nav-link" href="#">Cadastrar</a>
+                            <a class="nav-link" href="/login">Entrar</a>
+                            <a class="nav-link" href="/register">Cadastrar</a>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
-        <div class="container">
+        <div class="container content">
             @if(session('msg'))
                 <p class="alert alert-success mt-2">{{ session('msg') }}</p>
             @endif
@@ -47,7 +47,7 @@
             @endif
             @yield('content')
         </div>
-        <footer class="text-center bg-dark mt-4">
+        <footer class="text-center bg-dark mt-5">
             <div class="text-center text-light p-3" ">
                 <p class="lead">Ailton F &copy;2021<p>
             </div>

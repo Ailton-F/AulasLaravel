@@ -1,15 +1,16 @@
-body{
-    height: 100vh;
-}
-#events-container .card{
-    max-width: 33%;
+/*MAIN*/
+
+
+/*EVENT CREATE VIEW*/
+@media screen and (min-width: 991) {
+    #events-container .card{
+        max-width: 33%;
+    }
+    
+    #event-create-container{
+        height: 80vh;
+    }   
 }
 
-#event-create-container{
-    height: 80vh;
-}
-
-footer{
-    height: 10vh;
-}
+/*SHOW VIEW*/
 

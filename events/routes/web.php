@@ -30,6 +30,3 @@ Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('
 Route::get('/events/edit/{id}', [EventController::class, 'edit'])->middleware('auth');
 Route::put('/events/update/{id}', [EventController::class, 'update'])->middleware('auth');
 Route::delete('/events/unjoin/{id}', [EventController::class, 'unjoin'])->middleware('auth');
-
-//CONTACTS
-Route::get('/contact', [ContactController::class, 'index']);

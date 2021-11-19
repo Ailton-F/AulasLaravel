@@ -12,5 +12,7 @@
     }   
 }
 
-/*SHOW VIEW*/
-
+/*EDIT IMG PREVIEW*/
+.img-preview{
+    max-width: 50%;
+}

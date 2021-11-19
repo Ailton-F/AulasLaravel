@@ -19,12 +19,17 @@ use App\Http\Controllers\ProductsController;
 
 //EVENTS
 Route::get('/',[EventController::class, 'index']);
-Route::get('/events/create',[EventController::class, 'create']);
+Route::get('/events/create',[EventController::class, 'create'])->middleware('auth');
 Route::get('/events/{id}',[EventController::class, 'show']);
 Route::post('/events', [EventController::class, 'store']);
+Route::post('/event/join/{id}', [EventController::class, 'checkPresence'])->middleware('auth');
+
+//DASHBOARD
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth');
+Route::get('/events/edit/{id}', [EventController::class, 'edit'])->middleware('auth');
+Route::put('/events/update/{id}', [EventController::class, 'update'])->middleware('auth');
+Route::delete('/events/unjoin/{id}', [EventController::class, 'unjoin'])->middleware('auth');
 
 //CONTACTS
 Route::get('/contact', [ContactController::class, 'index']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');

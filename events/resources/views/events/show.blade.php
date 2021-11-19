@@ -11,18 +11,30 @@
             <ion-icon name="caret-forward-outline"></ion-icon> {{ $event->description }}
         </p>
         <p class="lead">
-            <ion-icon name="star-outline"></ion-icon> Event Owner
+            <ion-icon name="star-outline"></ion-icon> {{$eventOwner['name']}}
         </p>
         <p class="lead">
-            <ion-icon name="calendar-outline"></ion-icon> Data do evento: {{ $event->date }}
+            <ion-icon name="calendar-outline"></ion-icon> Data do evento: {{ date('d/m/Y', strtotime($event->date)) }}
         </p>
         <p class="lead">
             <ion-icon name="location-outline"></ion-icon> {{ $event->city }}
         </p>
         <p class="lead">
-            <ion-icon name="people-outline"></ion-icon> X participantes
+            <ion-icon name="people-outline"></ion-icon> {{count($event->users)}} participantes
         </p>
-        <buttom class="btn btn-primary mt-2" type="submit">Confirmar presença</buttom>
+        @if(!$hasUserJoined)
+        <form action="/event/join/{{$event->id}}" method="post">
+            @csrf
+            <button class="btn btn-primary mt-2" type="submit">
+                <a href="/event/join/{{$event->id}}" class="text-decoration-none text-light" onclick="event.preventDefault();
+               this.closest('form').submit();">
+                    Confirmar presença
+                </a>
+            </button>
+        </form>
+        @else
+            <p class="lead"> <ion-icon name="checkmark-done-outline"></ion-icon><b> Você já confirmou presença nesse evento</b></p>
+        @endif
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Ver detalhes de infraestrutura
@@ -38,7 +50,7 @@
                     <div class="modal-body">
                         @foreach($event->items as $item)
                         <p class="lead">
-                        <ion-icon name="caret-forward-outline"></ion-icon> {{$item}}
+                            <ion-icon name="caret-forward-outline"></ion-icon> {{$item}}
                         </p>
                         @endforeach
                     </div>

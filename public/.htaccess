@@ -4,10 +4,6 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-    <IfModule dir_module>
-        DirectoryIndex index.php
-    </IfModule>
-
     RewriteEngine On
 
     # Handle Authorization Header
@@ -23,4 +19,7 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+</IfModule>
+<IfModule dir_module>
+    DirectoryIndex index.php
 </IfModule>
